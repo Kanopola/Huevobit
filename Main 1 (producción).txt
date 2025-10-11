@@ -1,0 +1,183 @@
+import 'package:flutter/material.dart';
+import 'package:huevobit/widgets/footer.dart';
+import 'package:huevobit/resources/terminos.dart';
+import 'package:huevobit/screens/nido.dart';
+import 'package:overlay_support/overlay_support.dart';
+
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(OverlaySupport.global(
+    child: const HuevobitApp(),
+  ),
+  );
+}
+
+class HuevobitApp extends StatelessWidget {
+  const HuevobitApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Huevobit',
+      theme: ThemeData.dark().copyWith(
+        scaffoldBackgroundColor: Colors.black,
+        colorScheme: ColorScheme.dark(
+          primary: Colors.yellow,
+          secondary: Colors.white,
+          surface: Colors.black,
+        ),
+      ),
+      home: const HomeScreen(),
+      debugShowCheckedModeBanner: false,
+    );
+  }
+}
+
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  bool termsAccepted = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.black,
+      body: Center(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.fromLTRB(20.0, 40.0, 20.0, 20.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Column(
+                children: [
+                  Text(
+                    '🥚 Huevobit 🥚',
+                    style: TextStyle(
+                      color: Colors.yellow,
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  const Text(
+                    '¡Juega de pie, sentado o acostado!',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  const Text(
+                    '¡Juego Blockchain Descentralizado!',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  const Text(
+                    '¡90% para el ganador!',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                    ),
+                  ),
+
+                ],
+              ),
+              const SizedBox(height: 100),
+
+              Column(
+                children: [
+                  ElevatedButton(
+                    onPressed: termsAccepted ? () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => NidoScreen()),
+                      );
+                    } : null,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.black,
+                      foregroundColor: termsAccepted ? Colors.yellow : Colors.white,
+                      side: const BorderSide(color: Colors.white),
+                      fixedSize: const Size(140, 50),
+                    ),
+                    child: const Text('Entrar al juego'),
+                  ),
+                  const SizedBox(height: 20),
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Checkbox(
+                        value: termsAccepted,
+                        onChanged: (bool? value) {
+                          setState(() {
+                            termsAccepted = value ?? false;
+                          });
+                        },
+                        fillColor: WidgetStateProperty.resolveWith<Color>(
+                              (Set<WidgetState> states) {
+                            if (states.contains(WidgetState.selected)) {
+                              return Colors.yellow;
+                            }
+                            return Colors.white;
+                          },
+                        ),
+                      ),
+                      const Text(
+                        'Acepto los Términos y Condiciones',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ],
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    child: Text(
+                      termsAccepted
+                          ? '✅ Términos aceptados. Ya puedes entrar al juego.'
+                          : 'Debes aceptar los Términos y Condiciones para poder jugar',
+                      style: TextStyle(
+                        color: termsAccepted ? Colors.green : Colors.yellow,
+                        fontSize: 12,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+
+                  OutlinedButton(
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) => const TerminosDialog(),
+                      );
+                    },
+                    style: OutlinedButton.styleFrom(
+                      backgroundColor: Colors.black,
+                      foregroundColor: Colors.white,
+                      side: const BorderSide(color: Colors.white),
+                      fixedSize: const Size(250, 50),),
+                    child: const Text('Ver Términos y Condiciones'),
+                  ),
+                ],
+              ),
+
+              const SizedBox(height: 100),
+              const Padding(
+                padding: EdgeInsets.only(bottom: 10.0),
+                child: Footer(),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
