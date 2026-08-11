@@ -1,4 +1,4 @@
-Huevobit nació como una idea de diseño y criptografía aplicado al entretenimiento, convirtiéndose en un juego 100% autónomo que funciona exclusivamente sobre un contrato inteligente.
+Huevobit nació como una idea de diseño y criptografía aplicado al entretenimiento, convirtiéndose en un juego 100% autónomo que funciona exclusivamente sobre un contrato inteligente en la red BNB Chain.
 
 El nombre de mi juego blockchain llamado "Huevobit" lo hice con la idea de combinar las palabras "huevo" y "bit"; lo del huevo por ser una proteína perfecta y ser considerado un alimento completo; y la palabra "bit", del Sistema Binario, que es la base matemática y lógica de la arquitectura computacional que conocemos.
 
