@@ -6,6 +6,8 @@ Y como el huevo ha sido una parte esencial de mi supervivencia en esta etapa de 
 
 De manera que, ahora conocen el origen del nombre y espero también el apoyo, ya que, con juegos como estos todos nos beneficiamos más de lo que imaginan, solo que, hay que tener mucho cuidado con la ludopatía, ya que, aunque no es una lotería, ni es un sistema de apuestas, ni hay rifas, ni concursos, hay quienes deben manejarse muy bien.
 
+Descarga el juego en: https://huevobit.com/descargar/
+
 🔒 Características principales
 
 Descentralizado de verdad: No usa servidores, bases de datos, Firebase, Amazon, Webhooks ni VRF externos. Todo corre únicamente en el contrato inteligente.
